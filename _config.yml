@@ -52,6 +52,7 @@ updated_option: "mtime"
 ## Themes: https://hexo.io/themes/
 #theme: "butterfly"
 #remote_theme: jerryc127/hexo-theme-butterfly
+theme_config:
   remote:
-    url: https://github.com/jerryc127/hexo-theme-butterfly  # 主题 GitHub 地址
-    branch: main  # 主题分支（默认 main 或 master，可去主题仓库确认）
+    url: https://github.com/jerryc127/hexo-theme-butterfly
+    branch: main
