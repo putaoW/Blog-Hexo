@@ -1,0 +1,44 @@
+name: Hexo Deploy to GitHub Pages
+
+# 触发条件：推送到 main 分支时执行
+on:
+  push:
+    branches:
+      - main  # 你的主分支名称（若为 master 则改为 master）
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 拉取仓库代码
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 拉取完整历史，避免 Hexo 解析错误
+
+      # 2. 配置 Node.js 环境（匹配本地 Node 版本，建议 18+）
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'  # 缓存依赖，加速构建
+
+      # 3. 安装依赖（包括 Hexo、Butterfly 主题、插件）
+      - name: Install Dependencies
+        run: |
+          npm install hexo-cli -g  # 全局安装 Hexo 命令行工具
+          npm install  # 安装项目依赖（包括 hexo-theme-butterfly 等）
+
+      # 4. 清理缓存 + 构建静态文件
+      - name: Build Hexo Site
+        run: |
+          hexo clean  # 清理旧构建文件
+          hexo generate  # 生成静态文件到 public 目录
+
+      # 5. 部署到 GitHub Pages（推送到 gh-pages 分支）
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动生成的令牌，无需手动配置
+          publish_dir: ./public  # Hexo 构建后的静态文件目录
+          publish_branch: gh-pages  # 部署到 gh-pages 分支（GitHub Pages 读取此分支）
