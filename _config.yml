@@ -51,4 +51,5 @@ updated_option: "mtime"
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 #theme: "butterfly"
-remote_theme: jerryc127/hexo-theme-butterfly
+#remote_theme: jerryc127/hexo-theme-butterfly
+remote_theme: butterfly
