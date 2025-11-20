@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Ubuntu常用命令记录 | 数字森林</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="本篇主要记录 Ubuntu 安装软件的过程  开启root账号ssh12345678910su root# 写入证书cat ~&#x2F;.ssh&#x2F;id_rsa.pub | tee &#x2F;root&#x2F;.ssh&#x2F;authorized_keyschmod 600 &#x2F;root&#x2F;.ssh&#x2F;authorized_keys# 启用root登录, 禁用密码登录, 启用证书登录sed -i &#x27;s&#x2F;#PermitRoo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu常用命令记录">
+<meta property="og:url" content="https://ruihan.xin/posts/2023/01/6cbc3af20e31/">
+<meta property="og:site_name" content="数字森林">
+<meta property="og:description" content="本篇主要记录 Ubuntu 安装软件的过程  开启root账号ssh12345678910su root# 写入证书cat ~&#x2F;.ssh&#x2F;id_rsa.pub | tee &#x2F;root&#x2F;.ssh&#x2F;authorized_keyschmod 600 &#x2F;root&#x2F;.ssh&#x2F;authorized_keys# 启用root登录, 禁用密码登录, 启用证书登录sed -i &#x27;s&#x2F;#PermitRoo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-01-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-11-20T04:38:31.594Z">
+<meta property="article:author" content="senlin">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="数字森林" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">数字森林</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ruihan.xin"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-常用命令记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/posts/2023/01/6cbc3af20e31/" class="article-date">
+  <time class="dt-published" datetime="2023-01-19T16:00:00.000Z" itemprop="datePublished">2023-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Ubuntu常用命令记录
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本篇主要记录 Ubuntu 安装软件的过程</p>
+</blockquote>
+<h2 id="开启root账号ssh"><a href="#开启root账号ssh" class="headerlink" title="开启root账号ssh"></a>开启root账号ssh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="comment"># 写入证书</span></span><br><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub | <span class="built_in">tee</span> /root/.ssh/authorized_keys</span><br><span class="line"><span class="built_in">chmod</span> 600 /root/.ssh/authorized_keys</span><br><span class="line"><span class="comment"># 启用root登录, 禁用密码登录, 启用证书登录</span></span><br><span class="line">sed -i <span class="string">&#x27;s/#PermitRootLogin prohibit-password/PermitRootLogin yes/&#x27;</span> /etc/ssh/sshd_config</span><br><span class="line">sed -i <span class="string">&#x27;s/#PasswordAuthentication yes/PasswordAuthentication no/&#x27;</span> /etc/ssh/sshd_config</span><br><span class="line">sed -i <span class="string">&#x27;s/#PubkeyAuthentication yes/PubkeyAuthentication yes/&#x27;</span> /etc/ssh/sshd_config</span><br><span class="line"><span class="comment"># 重启ssh</span></span><br><span class="line">systemctl restart ssh                                                        </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>ssh-keygen -R example.com</code> 清除ssh指纹</p>
+</blockquote>
+<h2 id="更换源及升级包"><a href="#更换源及升级包" class="headerlink" title="更换源及升级包"></a>更换源及升级包</h2><h3 id="升级包"><a href="#升级包" class="headerlink" title="升级包"></a>升级包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新所有软件</span></span><br><span class="line">apt update &amp;&amp; apt upgrade -y</span><br></pre></td></tr></table></figure>
+
+<h2 id="更改语言"><a href="#更改语言" class="headerlink" title="更改语言"></a>更改语言</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt install fonts-wqy-zenhei &amp;&amp; fc-cache</span><br><span class="line">sed -i <span class="string">&#x27;s/^# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/&#x27;</span> /etc/locale.gen</span><br><span class="line">locale-gen</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;LANG=zh_CN.UTF-8&#x27;</span> | <span class="built_in">tee</span> /etc/default/locale</span><br></pre></td></tr></table></figure>
+
+<h2 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h2><blockquote>
+<p>使用nmtui工具配置WIFI</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install network-manager</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装ShellClash"><a href="#安装ShellClash" class="headerlink" title="安装ShellClash"></a>安装ShellClash</h2><p>阅读<a target="_blank" rel="noopener" href="https://github.com/juewuy/ShellCrash/blob/dev/README_CN.md">官方文档</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> url=<span class="string">&#x27;https://fastly.jsdelivr.net/gh/juewuy/ShellCrash@master&#x27;</span> &amp;&amp; wget -q --no-check-certificate -O /tmp/install.sh <span class="variable">$url</span>/install.sh  &amp;&amp; bash /tmp/install.sh &amp;&amp; <span class="built_in">source</span> /etc/profile &amp;&gt; /dev/null</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装Docker及常用镜像"><a href="#安装Docker及常用镜像" class="headerlink" title="安装Docker及常用镜像"></a>安装Docker及常用镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.docker.com | sh   <span class="comment"># 脚本安装</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/docker/daemon.json            <span class="comment"># 修改配置文件</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/var/lib/docker&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;dns&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;114.114.114.114&quot;</span><span class="punctuation">,</span> <span class="string">&quot;8.8.8.8&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置 Docker Pull 代理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改服务配置文件</span></span><br><span class="line">vi /etc/systemd/system/multi-user.target.wants/docker.service</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Environment=HTTP_PROXY=http://127.0.0.1:7890</span><br><span class="line">Environment=HTTPS_PROXY=http://127.0.0.1:7890</span><br><span class="line">Environment=NO_PROXY=localhost,127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>进入容器内部<br><code>docker exec -it 容器ID /bin/sh</code></p>
+</blockquote>
+<h3 id="安装Portainer"><a href="#安装Portainer" class="headerlink" title="安装Portainer"></a>安装Portainer</h3><h4 id="安装Portainer社区版"><a href="#安装Portainer社区版" class="headerlink" title="安装Portainer社区版"></a>安装Portainer社区版</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -p 9000:9000 \</span><br><span class="line">  --name=Portainer \</span><br><span class="line">  --restart=always \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock </span><br><span class="line">  -v /home/Docker/Portainer:/data </span><br><span class="line">  portainer/portainer-ce</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装PortainerAgent"><a href="#安装PortainerAgent" class="headerlink" title="安装PortainerAgent"></a>安装PortainerAgent</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> EDGE_ID=<span class="string">&quot;&quot;</span></span><br><span class="line"><span class="built_in">export</span> EDGE_KEY=<span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">docker run -d \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  -v /var/lib/docker/volumes:/var/lib/docker/volumes \</span><br><span class="line">  -v /:/host \</span><br><span class="line">  -v Portainer:/data \</span><br><span class="line">  --restart always \</span><br><span class="line">  -e EDGE=1 \</span><br><span class="line">  -e EDGE_ID=<span class="string">&quot;<span class="variable">$EDGE_ID</span>&quot;</span> \</span><br><span class="line">  -e EDGE_KEY=<span class="string">&quot;<span class="variable">$EDGE_KEY</span>&quot;</span> \</span><br><span class="line">  -e EDGE_INSECURE_POLL=1 \</span><br><span class="line">  --name PortainerEdgeAgent \</span><br><span class="line">  portainer/agent</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建网络, 以便后续使用</span></span><br><span class="line">network_name=<span class="string">&quot;network&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> docker network <span class="built_in">ls</span> | grep -q <span class="string">&quot;network&quot;</span>; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;网络已存在&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    docker network create --driver bridge --gateway=172.18.0.1 --subnet=172.18.0.0/24 network</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;网络创建成功&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="AList"><a href="#AList" class="headerlink" title="AList"></a>AList</h3><h4 id="仅安装-AList"><a href="#仅安装-AList" class="headerlink" title="仅安装 AList"></a>仅安装 AList</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">services:  </span><br><span class="line">    alist:</span><br><span class="line">        image: &#x27;xhofe/alist-aria2&#x27;</span><br><span class="line">        container_name: AList</span><br><span class="line">        volumes:</span><br><span class="line">            - &#x27;vol_1:/opt/alist/data&#x27;</span><br><span class="line">            - &#x27;/etc/docker/containers/alist/config.json:/opt/alist/data/config.json&#x27;</span><br><span class="line">        environment:</span><br><span class="line">            - &#x27;PUID=0&#x27;</span><br><span class="line">            - &#x27;PGID=0&#x27;</span><br><span class="line">            - &#x27;TZ=Asia/Shanghai&#x27;</span><br><span class="line">        ports:</span><br><span class="line">            - &#x27;5244:5244&#x27;</span><br><span class="line">        restart: unless-stopped</span><br><span class="line">        networks:</span><br><span class="line">            - persist</span><br><span class="line">            </span><br><span class="line">networks:</span><br><span class="line">    persist:</span><br><span class="line">        external: true</span><br><span class="line">        name: network</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">    vol_1:</span><br><span class="line">        name: AList</span><br></pre></td></tr></table></figure>
+
+<h4 id="包括-QbitTorrent-和-Aria2"><a href="#包括-QbitTorrent-和-Aria2" class="headerlink" title="包括 QbitTorrent 和 Aria2"></a>包括 QbitTorrent 和 Aria2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">services:  </span><br><span class="line">    qbittorrent:</span><br><span class="line">        image: &#x27;linuxserver/qbittorrent&#x27;</span><br><span class="line">        container_name: Qbittorrent</span><br><span class="line">        environment:</span><br><span class="line">            - &#x27;PUID=0&#x27;</span><br><span class="line">            - &#x27;PGID=0&#x27;</span><br><span class="line">            - &#x27;TZ=Asia/Shanghai&#x27;</span><br><span class="line">            - &#x27;TORRENTING_PORT=6881&#x27;</span><br><span class="line">            - &#x27;WEBUI_PORT=6879&#x27;</span><br><span class="line">        volumes:</span><br><span class="line">            - &#x27;vol_2:/config&#x27;</span><br><span class="line">            - &#x27;vol_downloads:/downloads&#x27;</span><br><span class="line">        ports:</span><br><span class="line">            - &#x27;5244:5244&#x27;</span><br><span class="line">            - &#x27;6800:6800&#x27;</span><br><span class="line">            - &#x27;6880:6880&#x27;  </span><br><span class="line">            - &#x27;6879:6879&#x27;</span><br><span class="line">            - &#x27;6881:6881&#x27;</span><br><span class="line">            - &#x27;6881:6881/udp&#x27;</span><br><span class="line">        restart: unless-stopped</span><br><span class="line">        networks:</span><br><span class="line">            - persist</span><br><span class="line">  </span><br><span class="line">    alist:</span><br><span class="line">        image: &#x27;xhofe/alist-aria2&#x27;</span><br><span class="line">        container_name: AList</span><br><span class="line">        volumes:</span><br><span class="line">            - &#x27;vol_1:/opt/alist/data&#x27;</span><br><span class="line">            - &#x27;vol_downloads:/opt/alist/data/temp/qbittorrent&#x27;</span><br><span class="line">            - &#x27;/mnt/share:/mnt/share&#x27;</span><br><span class="line">            - &#x27;/etc/docker/containers/alist/config.json:/opt/alist/data/config.json&#x27;</span><br><span class="line">        environment:</span><br><span class="line">            - &#x27;PUID=0&#x27;</span><br><span class="line">            - &#x27;PGID=0&#x27;</span><br><span class="line">            - &#x27;TZ=Asia/Shanghai&#x27;</span><br><span class="line">        restart: unless-stopped</span><br><span class="line">        network_mode: &quot;service:qbittorrent&quot;</span><br><span class="line">            </span><br><span class="line">    AriaNg:</span><br><span class="line">        image: &#x27;p3terx/ariang&#x27;</span><br><span class="line">        container_name: AriaNg</span><br><span class="line">        restart: unless-stopped</span><br><span class="line">        network_mode: &quot;service:qbittorrent&quot;</span><br><span class="line">        </span><br><span class="line">networks:</span><br><span class="line">    persist:</span><br><span class="line">        external: true</span><br><span class="line">        name: network</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">    vol_1:</span><br><span class="line">        name: AList</span><br><span class="line">    vol_2:</span><br><span class="line">        name: Qbittorrent</span><br><span class="line">    vol_downloads:</span><br><span class="line">        name: Downloads-Qbittorrent</span><br></pre></td></tr></table></figure>
+
+<h3 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h3><h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">    MySQL:</span><br><span class="line">        image: &#x27;mysql&#x27;</span><br><span class="line">        container_name: MySQL</span><br><span class="line">        restart: always</span><br><span class="line">        ports:</span><br><span class="line">            - &#x27;3306:3306&#x27;</span><br><span class="line">        volumes:</span><br><span class="line">            - &#x27;vol_1:/var/lib/mysql&#x27;</span><br><span class="line">        environment:</span><br><span class="line">            - &#x27;MYSQL_ROOT_PASSWORD=&#x27;</span><br><span class="line">            - &#x27;TZ=Asia/Shanghai&#x27;</span><br><span class="line">        networks:</span><br><span class="line">            - persist</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">    persist:</span><br><span class="line">        external: true</span><br><span class="line">        name: network</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">    vol_1:</span><br><span class="line">        name: MySQL</span><br></pre></td></tr></table></figure>
+
+<h4 id="MariaDB"><a href="#MariaDB" class="headerlink" title="MariaDB"></a>MariaDB</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">    MariaDB:</span><br><span class="line">        image: mariadb</span><br><span class="line">        container_name: MariaDB</span><br><span class="line">        restart: always</span><br><span class="line">        ports:</span><br><span class="line">            - &#x27;3307:3306&#x27;</span><br><span class="line">        volumes:</span><br><span class="line">            - &#x27;vol_1:/var/lib/mysql&#x27;</span><br><span class="line">        environment:</span><br><span class="line">            - &#x27;MARIADB_ROOT_PASSWORD=&#x27;</span><br><span class="line">            - &#x27;TZ=Asia/Shanghai&#x27;</span><br><span class="line">        networks:</span><br><span class="line">            - persist</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">    persist:</span><br><span class="line">        external: true</span><br><span class="line">        name: network</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">    vol_1:</span><br><span class="line">        external: true</span><br><span class="line">        name: MariaDB</span><br></pre></td></tr></table></figure>
+
+<h3 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h3><blockquote>
+<p>在不支持AVX指令集的CPU上必须使用4.4.18版本, 不支持5.0+版本</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">    MongoDB:</span><br><span class="line">        image: mongo:4.4.18</span><br><span class="line">        container_name: MongoDB</span><br><span class="line">        restart: always</span><br><span class="line">        ports:</span><br><span class="line">            - &#x27;27017:27017&#x27;</span><br><span class="line">        volumes:</span><br><span class="line">            - &#x27;vol_1:/data&#x27;</span><br><span class="line">        environment:</span><br><span class="line">            - &#x27;MONGO_INITDB_ROOT_USERNAME=root&#x27;</span><br><span class="line">            - &#x27;MONGO_INITDB_ROOT_PASSWORD=&#x27;</span><br><span class="line">        networks:</span><br><span class="line">            - persist</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">    persist:</span><br><span class="line">        external: true</span><br><span class="line">        name: network</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">    vol_1:</span><br><span class="line">        external: true</span><br><span class="line">        name: MongoDB</span><br></pre></td></tr></table></figure>
+
+<h3 id="HomeAssistant"><a href="#HomeAssistant" class="headerlink" title="HomeAssistant"></a>HomeAssistant</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">    HomeAssistant:</span><br><span class="line">        image: homeassistant/home-assistant</span><br><span class="line">        container_name: HomeAssistant</span><br><span class="line">        restart: always</span><br><span class="line">        ports:</span><br><span class="line">            - &#x27;8500:8123&#x27;</span><br><span class="line">        volumes:</span><br><span class="line">            - &#x27;vol_1:/config&#x27;</span><br><span class="line">        networks:</span><br><span class="line">            - persist</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">    persist:</span><br><span class="line">        external: true</span><br><span class="line">        name: network</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">    vol_1:</span><br><span class="line">        external: true</span><br><span class="line">        name: HomeAssistant</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装常用语言"><a href="#安装常用语言" class="headerlink" title="安装常用语言"></a>安装常用语言</h2><h3 id="安装Go"><a href="#安装Go" class="headerlink" title="安装Go"></a>安装Go</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GO_VERSION=<span class="string">&quot;1.23.2&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;linux-amd64&quot;</span> <span class="comment"># linux-amd64 / linux-arm64</span></span><br><span class="line">GO_URL=<span class="string">&quot;https://golang.google.cn/dl/go<span class="variable">$GO_VERSION</span>.<span class="variable">$DEVICE</span>.tar.gz&quot;</span></span><br><span class="line">wget -O go.tar.gz <span class="variable">$GO_URL</span></span><br><span class="line"><span class="built_in">sudo</span> tar -C /usr/local -xzf go.tar.gz</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=$PATH:/usr/local/go/bin&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">go version</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装NodeJs"><a href="#安装NodeJs" class="headerlink" title="安装NodeJs"></a>安装NodeJs</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">NODE_VERSION=<span class="string">&quot;20.18.0&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;linux-x64&quot;</span> <span class="comment"># linux-x64 / linux-arm64</span></span><br><span class="line">NODE_URL=<span class="string">&quot;https://nodejs.org/dist/v<span class="variable">$&#123;NODE_VERSION&#125;</span>/node-v<span class="variable">$&#123;NODE_VERSION&#125;</span>-<span class="variable">$DEVICE</span>.tar.xz&quot;</span></span><br><span class="line">wget -O node.tar.xz <span class="variable">$NODE_URL</span></span><br><span class="line"><span class="built_in">sudo</span> tar -C /usr/local --strip-components 1 -xf node.tar.xz</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=$PATH:/usr/local/bin&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">node -v &amp;&amp; npm -v</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ruihan.xin/posts/2023/01/6cbc3af20e31/" data-id="cmi6xybz00001ra29bqagc8ar" data-title="Ubuntu常用命令记录" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/posts/2025/02/95dfce22be52/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          网站建设方案书
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Doc/" rel="tag">Doc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Doc/" style="font-size: 10px;">Doc</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">学习</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">十一月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/posts/2025/11/c5d5d37b43f3/">费曼学习法</a>
+          </li>
+        
+          <li>
+            <a href="/posts/2025/02/95dfce22be52/">网站建设方案书</a>
+          </li>
+        
+          <li>
+            <a href="/posts/2023/01/6cbc3af20e31/">Ubuntu常用命令记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 senlin<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
